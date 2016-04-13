@@ -2,21 +2,27 @@
 /*
 Plugin Name: FCC Nativo Ads
 Description: Adds Nativo Ad scripts to site page headings with admin settings options to toggle on or off.
-Version: 1.0
+Version: 1.16.04.13
 Author: FCC Digital / Ryan Veitch
 Author http://forumcomm.com/
 License: GPLv2
 */
 
 
-/* Nativo Admin Settings
-*  Adds admin settings options for Nativo ads.
+/**
+* Nativo Admin Settings
+*
+* Adds admin settings options for Nativo ads.
+* @version 1.16.04.13
 */
 add_action('wp_head','hook_nativo_script', 1000);
 function hook_nativo_script() {
   if ('true' == get_option('nativo-ad-script')) {
-    $output='<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>';
-  	echo $output;
+    $output =
+		"\n<!-- OpenX Bidder -->\n" .
+		'<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>' .
+		"\n";
+	 echo $output;
   }
 }
 
